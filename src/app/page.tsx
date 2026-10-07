@@ -1,5 +1,5 @@
 import MainNews from "@/components/MainNews";
-import Marquee from "@/components/Marquee";
+
 import MostRead from "@/components/MostRead";
 import NewsCard from "@/components/NewsCard";
 
@@ -12,6 +12,7 @@ interface IOtherSection {
     description: string;
     imageUrl: string;
     imageAlt: string;
+    type: string;
   }[];
 }
 
@@ -21,12 +22,16 @@ export default async function Home() {
   const sections = data.data;
   const mainNews = sections[0].articles;
 
-  const otherSections: IOtherSection[] = sections.slice(1);
+  const otherSections: IOtherSection[] = sections
+    .slice(1)
+    .map((s: IOtherSection) => ({
+      ...s,
+      articles: s.articles.filter((a) => a.type !== "link"),
+    }))
+    .filter((s: IOtherSection) => s.articles.length > 0);
 
   return (
     <div>
-      <Marquee />
-
       <div className="grid grid-cols-3 gap-5 max-w-7xl mx-auto">
         {/* Main News */}
         <div className="col-span-2">

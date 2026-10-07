@@ -1,23 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 
-
 interface News {
-    id:string,
-    title: string,
-    description: string,
-    imageUrl:string,
-    imageAlt:string
-    category:string
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
+  category: string;
 }
 
-
-
-const NewsCard = ({ article } : {article:News}) => {
+const NewsCard = ({ article }: { article: News }) => {
   return (
     <Link
       href={`/article/${article.id}`}
-      className="group flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition hover:shadow-md"
+      className="group flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm"
     >
       {/* Image */}
       <div className="relative h-36 w-full overflow-hidden">
@@ -36,19 +33,13 @@ const NewsCard = ({ article } : {article:News}) => {
           {article.category}
         </span>
 
-        <h2 className="line-clamp-3 text-base font-semibold leading-snug text-gray-900 group-hover:text-red-600">
+        <h2 className="line-clamp-3 text-base font-semibold leading-snug text-gray-900 group-hover:text-red-700">
           {article.title}
         </h2>
 
         <p className="line-clamp-2 text-sm text-gray-500">
           {article.description}
         </p>
-
-        {/* {article.firstPublished && (
-          <p className="mt-auto pt-2 text-xs text-gray-400">
-            {article.firstPublished}
-          </p>
-        )} */}
       </div>
     </Link>
   );
