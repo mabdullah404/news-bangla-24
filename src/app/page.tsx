@@ -7,6 +7,9 @@ export default async function Home() {
   const sections = data.data;
   const mainNews = sections[0].articles;
 
+  const otherSections = sections.slice(1);
+  console.log(otherSections)
+
   return (
     <div>
       <Marquee></Marquee>
