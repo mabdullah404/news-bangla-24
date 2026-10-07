@@ -1,5 +1,19 @@
 import MainNews from "@/components/MainNews";
 import Marquee from "@/components/Marquee";
+import MostRead from "@/components/MostRead";
+import NewsCard from "@/components/NewsCard";
+
+interface IOtherSection {
+  curationId: string;
+  title: string;
+  articles: {
+    id: string;
+    title: string;
+    description: string;
+    imageUrl: string;
+    imageAlt: string;
+  }[];
+}
 
 export default async function Home() {
   const res = await fetch("https://news-api-v2.vercel.app/api/news/sections");
@@ -7,24 +21,37 @@ export default async function Home() {
   const sections = data.data;
   const mainNews = sections[0].articles;
 
-  const otherSections = sections.slice(1);
-  console.log(otherSections)
+  const otherSections: IOtherSection[] = sections.slice(1);
 
   return (
     <div>
-      <Marquee></Marquee>
+      <Marquee />
 
-      <div className="grid  grid-cols-3 max-w-7xl mx-auto">
-
+      <div className="grid grid-cols-3 gap-5 max-w-7xl mx-auto">
         {/* Main News */}
-        <div className="col-span-2 ">
+        <div className="col-span-2">
+          <MainNews news={mainNews} />
 
-          <MainNews news={mainNews}></MainNews>
+          <div className="grid gap-5 mt-5">
+            {otherSections.map((os) => (
+              <div key={os.curationId}>
+                <h1 className="font-bold border-b-2 pb-1 border-red-700 mb-2">
+                  {os.title}
+                </h1>
+
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {os.articles.map((article) => (
+                    <NewsCard key={article.id} article={article} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/*  */}
-        <div className="col-span-1 bg-amber-300 py-6">
-
+        {/* Most Read Category */}
+        <div className="col-span-1">
+          <MostRead />
         </div>
       </div>
     </div>
