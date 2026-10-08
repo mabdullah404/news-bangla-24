@@ -36,7 +36,7 @@ const Header = () => {
           <div className="flex justify-center md:justify-self-end gap-2 sm:gap-3">
             <button
               className="text-xs sm:text-sm text-gray-700 px-3 py-2
-                hover:text-[#d11111] hover:bg-red-700
+                hover:text-[#d11111]
                     rounded-md transition duration-200"
             >
               সাইন ইন
