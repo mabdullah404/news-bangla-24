@@ -13,6 +13,7 @@ interface IOtherSection {
     imageUrl: string;
     imageAlt: string;
     type: string;
+    category?: string;
   }[];
 }
 

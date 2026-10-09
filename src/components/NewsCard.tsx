@@ -7,7 +7,7 @@ interface News {
   description: string;
   imageUrl: string;
   imageAlt: string;
-  category: string;
+  category?: string;
 }
 
 const NewsCard = ({ article }: { article: News }) => {
