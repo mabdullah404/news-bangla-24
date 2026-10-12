@@ -43,6 +43,13 @@ const SignUpPage = () => {
     });
   };
 
+  const handleGithubSignup = async ()=>{
+    await authClient.signUp.social({
+      provider : "github",
+      callbackURL: "/"
+    })
+  }
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -65,6 +72,7 @@ const SignUpPage = () => {
             সাইন ইন করুন
           </button>
           <button type="button" onClick={handleGoogleSignUp} className="btn ">Google WIth Signin</button>
+          <button type="button" onClick={handleGithubSignup} className="btn ">Github WIth Signin</button>
         </fieldset>
       </form>
     </div>

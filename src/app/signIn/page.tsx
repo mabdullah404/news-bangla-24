@@ -41,6 +41,15 @@ const SignIn = () => {
     console.log(data)
   };
 
+  const handlwGithubSignIn = async ()=>{
+    const data = await authClient.signIn.social({
+      provider:"github"
+
+    })
+
+    console.log(data) ;
+  }
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -74,6 +83,7 @@ const SignIn = () => {
             সাইন ইন করুন
           </button>
           <button type="button" onClick={handleGoogleSignIn} className="btn">Sign In with Google</button>
+          <button type="button" onClick={handlwGithubSignIn} className="btn">Sign In with Github</button>
         </fieldset>
       </form>
     </div>
