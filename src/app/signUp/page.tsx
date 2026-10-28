@@ -1,6 +1,6 @@
 "use client";
 
-import { authClient } from "@/lib/auth-client";
+// import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -9,45 +9,40 @@ const SignUpPage = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    toast.info("অথেনটিকেশন সাময়িকভাবে বন্ধ আছে");
+    // const formData = new FormData(e.currentTarget);
+    // const name = formData.get("name") as string;
+    // const email = formData.get("email") as string;
+    // const password = formData.get("password") as string;
+    // const image = (formData.get("image") as string) || undefined;
 
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-    const image = (formData.get("image") as string) || undefined;
-
-    const { data, error } = await authClient.signUp.email({
-      name,
-      email,
-      password,
-      image: image?.trim() ? image : undefined,
-      callbackURL: "/",
-    });
-
-    if (data) {
-      console.log(data);
-      toast.success("SignUp Success full")
-      router.push("/");
-    }
-
-    if (error) {
-      console.log(error);
-      toast.error(error.message)
-    }
+    // const { data, error } = await authClient.signUp.email({
+    //   name,
+    //   email,
+    //   password,
+    //   image: image?.trim() ? image : undefined,
+    //   callbackURL: "/",
+    // });
+    // if (data) {
+    //   toast.success("SignUp Success full")
+    //   router.push("/");
+    // }
   };
 
-   const handleGoogleSignUp = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/",
-    });
+  const handleGoogleSignUp = async () => {
+    toast.info("অথেনটিকেশন সাময়িকভাবে বন্ধ আছে");
+    // await authClient.signIn.social({
+    //   provider: "google",
+    //   callbackURL: "/",
+    // });
   };
 
   const handleGithubSignup = async () => {
-    await authClient.signIn.social({
-      provider: "github",
-      callbackURL: "/",
-    });
+    toast.info("অথেনটিকেশন সাময়িকভাবে বন্ধ আছে");
+    // await authClient.signIn.social({
+    //   provider: "github",
+    //   callbackURL: "/",
+    // });
   };
 
   return (

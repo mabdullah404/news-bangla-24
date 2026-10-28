@@ -6,6 +6,15 @@ const client = new MongoClient(process.env.MONGODB_URL as string);
 const db = client.db("bangla-news-24");
 
 export const auth = betterAuth({
+  baseURL: process.env.BETTER_AUTH_URL,
+  trustedOrigins: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:3002",
+    "http://localhost:*",
+    "https://*.vercel.app",
+    ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : []),
+  ],
   emailAndPassword: { 
     enabled: true, 
   },

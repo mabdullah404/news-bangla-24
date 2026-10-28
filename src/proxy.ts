@@ -1,23 +1,19 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { auth } from './lib/auth'
-import { headers } from 'next/headers'
+// import { auth } from './lib/auth'
+// import { headers } from 'next/headers'
  
 // This function can be marked `async` if using `await` inside
 export async function proxy(request: NextRequest) {
+    // const session = await auth.api.getSession({
+    //     headers: await headers()
+    // })
 
-    const session = await auth.api.getSession({
-        headers: await headers()
+    // const user = session?.user
 
-    })
-
-    const user = session?.user
-
-    if(!user){
-        return NextResponse.redirect(new URL("/signIn",request.url))
-    }
-
-    console.log(session)
+    // if(!user){
+    //     return NextResponse.redirect(new URL("/signIn",request.url))
+    // }
 
     return NextResponse.next()
 }
@@ -26,5 +22,5 @@ export async function proxy(request: NextRequest) {
 // export default function proxy(request: NextRequest) { ... }
  
 export const config = {
-  matcher: ["/profile", "/article/:path*"],
+  matcher: ["/profile"],
 }

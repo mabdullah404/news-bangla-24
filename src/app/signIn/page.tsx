@@ -1,6 +1,6 @@
 "use client";
 
-import { authClient } from "@/lib/auth-client";
+// import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
 import React from "react";
@@ -11,44 +11,31 @@ const SignIn = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    toast.info("অথেনটিকেশন সাময়িকভাবে বন্ধ আছে");
+    // const formData = new FormData(e.currentTarget);
+    // const email = formData.get("email") as string;
+    // const password = formData.get("password") as string;
 
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-
-    const { data, error } = await authClient.signIn.email({
-      email,
-      password,
-      callbackURL: "/",
-    });
-
-    if (data) {
-      console.log(data);
-      toast.success("SignIn Success full");
-      router.push("/");
-    }
-
-    if (error) {
-      console.log(error);
-      toast.error("something went wrong");
-    }
+    // const { data, error } = await authClient.signIn.email({
+    //   email,
+    //   password,
+    //   callbackURL: "/",
+    // });
+    // if (data) {
+    //   toast.success("SignIn Success full");
+    //   router.push("/");
+    // }
   };
 
   const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
-      provider: "google",
-    });
-    console.log(data)
+    toast.info("অথেনটিকেশন সাময়িকভাবে বন্ধ আছে");
+    // await authClient.signIn.social({ provider: "google" });
   };
 
-  const handlwGithubSignIn = async ()=>{
-    const data = await authClient.signIn.social({
-      provider:"github"
-
-    })
-
-    console.log(data) ;
-  }
+  const handlwGithubSignIn = async () => {
+    toast.info("অথেনটিকেশন সাময়িকভাবে বন্ধ আছে");
+    // await authClient.signIn.social({ provider: "github" });
+  };
 
   return (
     <div>
