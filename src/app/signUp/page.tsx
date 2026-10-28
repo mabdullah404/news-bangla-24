@@ -43,12 +43,12 @@ const SignUpPage = () => {
     });
   };
 
-  const handleGithubSignup = async ()=>{
-    await authClient.signUp.social({
-      provider : "github",
-      callbackURL: "/"
-    })
-  }
+  const handleGithubSignup = async () => {
+    await authClient.signIn.social({
+      provider: "github",
+      callbackURL: "/",
+    });
+  };
 
   return (
     <div>
